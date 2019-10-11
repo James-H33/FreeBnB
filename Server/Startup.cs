@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Server.Data;
+using Server.Data.Interfaces;
 using System.Linq;
 
 namespace FreeBnB.Server
@@ -24,7 +25,11 @@ namespace FreeBnB.Server
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-      services.AddMvc().AddNewtonsoftJson();
+      services.AddMvc().AddNewtonsoftJson()
+        .AddNewtonsoftJson(opt => {
+          opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+        });
+      services.AddScoped<IHomesRepository, HomesRepository>();
       services.AddResponseCompression(opts =>
       {
         opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(

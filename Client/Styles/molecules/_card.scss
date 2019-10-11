@@ -1,0 +1,21 @@
+.card {
+  box-shadow: 0px 2px 4px #c5c5c5;
+  border-radius: 4px;
+}
+
+.card__image {
+  img {
+    width: 100%;
+  }
+}
+
+.card__content {
+  padding: pad(2);
+}
+
+.card__content-title {
+  color: $generalTextColor;
+  padding: pad(1) 0;
+  font-size: 18px;
+  font-weight: 800;
+}

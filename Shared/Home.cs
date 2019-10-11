@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Server.Models
+namespace FreeBnB.Shared
 {
   public class Home
   {

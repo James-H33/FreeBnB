@@ -1,7 +1,20 @@
 ﻿@page "/"
+@using Services.Interfaces
+@using FreeBnB.Shared
 
-<h1>Hello, world!</h1>
+@inject IHomeService HomeService
 
-Welcome to your new app.
+<div class="home">
+  <h2>Find a place for you...</h2>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+  <Homes HomesContent="@homes" />
+</div>
+
+@code {
+  public List<Home> homes { get; set; } = new List<Home>();
+
+  protected override async Task OnInitializedAsync()
+  {
+    homes = await HomeService.GetHomes();
+  }
+}

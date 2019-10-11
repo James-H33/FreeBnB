@@ -1,29 +1,24 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">FreeBnB</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+﻿<!-- <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+    <span class="oi oi-home" aria-hidden="true"></span> Home
+</NavLink> -->
+
+<div class="header">
+  <div class="header__content-wrapper">
+    <h1 class="header__title">freebnb</h1>
+    <div class="nav header__nav">
+      <NavLink class="nav__link" href="/Places" Match="NavLinkMatch.All">
+        Home
+      </NavLink>
+      <NavLink class="nav__link" href="/Places" Match="NavLinkMatch.All">
+        Places
+      </NavLink>
+      <NavLink class="nav__link" href="/Places" Match="NavLinkMatch.All">
+        Signin
+      </NavLink>
+    </div>
+  </div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
 
 @code {
     bool collapseNavMenu = true;
