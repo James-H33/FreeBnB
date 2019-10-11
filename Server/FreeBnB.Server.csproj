@@ -10,6 +10,7 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.7.0-preview9.19421.4"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0-preview9.19423.6"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0-preview9.19423.6"/>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3-beta1"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\FreeBnB.Client.csproj"/>

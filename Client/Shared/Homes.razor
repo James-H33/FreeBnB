@@ -1,0 +1,44 @@
+@using FreeBnB.Shared
+@inject NavigationManager NavigationManager
+
+<div class="homes">
+  @foreach (var home in HomesContent)
+  {
+    <div @onclick="(() => RouteTo(home))" class="card">
+      <div class="card__image">
+        <img src="@GetPhoto(home)">
+      </div>
+      <div class="card__content">
+        <div class="card__content-title">@home.Name</div>
+        <p>@TrimDescription(home.Description)</p>
+      </div>
+    </div>
+  }
+</div>
+
+@code {
+  [Parameter]
+  public List<Home> HomesContent { get; set; } = new List<Home>();
+
+  private string GetPhoto(Home h)
+  {
+    var photo = h.Photos.ToList().FirstOrDefault();
+
+    if (photo != null)
+    {
+      return photo.Url;
+    }
+
+    return "";
+  }
+
+  public void RouteTo(Home home)
+  {
+    NavigationManager.NavigateTo($"/home/{home.Id}");
+  }
+
+  private string TrimDescription(string desc)
+  {
+    return desc.Length > 80 ? desc.Substring(0, 80) + "..." : desc;
+  }
+}

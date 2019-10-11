@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+}
+
+.nav__info {
+  grid-area: Nav;
+  justify-self: end;
+  display: flex;
+}
+
+.nav__link {
+  color: #484848;
+  font-size: 21px;
+  font-weight: 300;
+  margin-left: 50px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

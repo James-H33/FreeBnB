@@ -1,0 +1,16 @@
+@using FreeBnB.Shared
+
+@code {
+  public List<Home> homes { get; set; } = new List<Home>();
+
+  protected void OnInit()
+  {
+    var home1 = new Home
+    {
+      Id = 1,
+      Name = "James's Stay"
+    };
+
+    homes.Add(home1);
+  }
+}

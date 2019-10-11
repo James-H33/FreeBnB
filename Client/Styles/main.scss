@@ -1,0 +1,27 @@
+@import './colors';
+@import './molecules/molecules';
+@import './organisms/organisms';
+@import './pages/pages';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+h2 {
+  color: $generalTextColor;
+}
+
+.main {
+  max-width: 1200px;
+  padding: 0 2em;
+  margin: 0 auto;
+}

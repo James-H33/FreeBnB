@@ -1,0 +1,12 @@
+.homes {
+  display: grid;
+  grid-gap: 1em;
+
+  @media screen and (min-width: 769px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
