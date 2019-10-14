@@ -1,3 +1,25 @@
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px; }
+
+.gallery__main-photo {
+  min-height: 350px;
+  background-size: cover;
+  cursor: pointer; }
+
+.gallery__multi-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px; }
+
+.gallery__multi-photo {
+  background-size: cover;
+  transition: transform 500ms ease;
+  cursor: pointer; }
+  .gallery__multi-photo:hover {
+    transform: scale(1.03); }
+
 .card {
   box-shadow: 0px 2px 4px #c5c5c5;
   border-radius: 4px; }
@@ -64,10 +86,38 @@
     .homes {
       grid-template-columns: repeat(3, 1fr); } }
 
-.home {
+.home-page {
+  padding: 48px 0 0 0; }
+
+.home-page__gallery {
+  margin-bottom: 32px; }
+
+.home-page__info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'Title Contact' 'Description Contact'; }
+
+.home-page__title {
+  grid-area: Title;
+  color: #484848;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 18px; }
+
+.home-page__description {
+  color: #484848;
+  grid-area: Description; }
+
+.home-page__contact {
+  color: #484848;
+  grid-area: Contact; }
+
+.index_page {
   padding: 30px 0; }
-  .home h2 {
+  .index_page h2 {
     padding: 20px 0; }
+  .index_page .card {
+    cursor: pointer; }
 
 * {
   margin: 0;

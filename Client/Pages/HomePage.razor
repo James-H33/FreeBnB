@@ -1,16 +1,30 @@
-@page "/Home/{HomeId}"
-
+@page "/home/{HomeId}"
 @using FreeBnB.Shared
+@inject HttpClient Http
 
-<div>
+<div class="home-page">
+  <div class="home-page__gallery">
+    <Gallery Photos="@home.Photos.ToList()" />
+  </div>
 
+  <div class="home-page__info">
+    <h4 class="home-page__title">@home.Name</h4>
+
+    <div class="home-page__description">@home.Description</div>
+
+    <div class="home-page__contact">
+      <h5 class="home-page__title">Contact</h5>
+      <div>941-555-9090</div>
+      <div>James@mail.com</div>
+    </div>
+  </div>
 </div>
 
 @code {
   [Parameter]
   public string HomeId { get; set; }
 
-  private Home home = new Home();
+  private Home home = new Home() { Photos = new List<Photo>() };
 
   protected async override void OnInitialized()
   {
@@ -19,6 +33,17 @@
 
   public async Task GetHome(string Id)
   {
-    await Task.FromResult(new Home() { Id = 1, Name = "James" });
+    try {
+      home = await Http.GetJsonAsync<Home>($"api/homes/{Id}");
+    }
+    catch
+    {
+      home = new Home() {
+        Id = 1,
+        Name = "Home Not Found."
+      };
+    }
+
+    StateHasChanged();
   }
 }
