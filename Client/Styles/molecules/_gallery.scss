@@ -1,0 +1,27 @@
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.gallery__main-photo {
+  min-height: 350px;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.gallery__multi-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.gallery__multi-photo {
+  background-size: cover;
+  transition: transform 500ms ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}

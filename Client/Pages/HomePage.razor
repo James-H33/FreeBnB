@@ -1,16 +1,35 @@
-@page "/Home/{HomeId}"
-
+@page "/home/{HomeId}"
 @using FreeBnB.Shared
+@inject HttpClient Http
 
-<div>
+<div class="home-page">
+  <div class="home-page__gallery">
+    <Gallery Photos="@home.Photos.ToList()" />
+  </div>
 
+  <div class="home-page__info">
+    <h4 class="home-page__title">@home.Name</h4>
+
+    <div class="home-page__description">
+      Coastal Maine Cottage and farm - 5-10 minute walk to scenic Morgan Bay with easy access to biking, hiking, birding, swimming, kayaking. About 50 minutes drive from Acadia National Park.
+      Scenic views, private, small kitchenette, sleeping loft, on demand hot water
+
+      The farm also offers a seasonal performing arts center in another near-by barn on the property that is available to guests for reunions, celebrations and artistic functions.
+    </div>
+
+    <div class="home-page__contact">
+      <h5 class="home-page__title">Contact</h5>
+      <div>941-555-9090</div>
+      <div>James@mail.com</div>
+    </div>
+  </div>
 </div>
 
 @code {
   [Parameter]
   public string HomeId { get; set; }
 
-  private Home home = new Home();
+  private Home home = new Home() { Photos = new List<Photo>() };
 
   protected async override void OnInitialized()
   {
@@ -19,6 +38,17 @@
 
   public async Task GetHome(string Id)
   {
-    await Task.FromResult(new Home() { Id = 1, Name = "James" });
+    try {
+      home = await Http.GetJsonAsync<Home>($"api/homes/{Id}");
+    }
+    catch
+    {
+      home = new Home() {
+        Id = 1,
+        Name = "Home Not Found."
+      };
+    }
+
+    StateHasChanged();
   }
 }
