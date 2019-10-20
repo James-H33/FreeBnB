@@ -8,7 +8,7 @@ namespace Server.Data
     public DataContext(DbContextOptions options) : base(options) {}
 
     public DbSet<Home> Homes { get; set; }
-
     public DbSet<Photo> Photos { get; set; }
+    public DbSet<User> Users { get; set; }
   }
 }
