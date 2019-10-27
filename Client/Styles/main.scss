@@ -1,4 +1,5 @@
 @import './colors';
+@import './atoms/atoms';
 @import './molecules/molecules';
 @import './organisms/organisms';
 @import './pages/pages';
@@ -9,6 +10,7 @@
 }
 
 html, body {
+  color: $generalTextColor;
   font-family: 'Open Sans', sans-serif;
 }
 

@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -7,7 +8,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Server.Data;
 using Server.Data.Interfaces;
+using Server.Services;
+using Server.Services.Interfaces;
+using Server.Mappings;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace FreeBnB.Server
 {
@@ -29,12 +36,31 @@ namespace FreeBnB.Server
         .AddNewtonsoftJson(opt => {
           opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         });
+
+      services.AddAutoMapper(typeof(AutoMapperProfiles));
+
+      // Services
+      services.AddScoped<IAuthService, AuthService>();
+
+      // Repositories
       services.AddScoped<IHomesRepository, HomesRepository>();
+      services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddResponseCompression(opts =>
       {
         opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                   new[] { "application/octet-stream" });
       });
+
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options => {
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                ValidateIssuer = false,
+                ValidateAudience = false
+            };
+        });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,9 @@
+<button @onclick="@OnButtonClick" class="fb-button">@Label</button>
+
+@code {
+  [Parameter]
+  public string Label { get; set; }
+
+  [Parameter]
+  public EventCallback OnButtonClick { get; set; }
+}

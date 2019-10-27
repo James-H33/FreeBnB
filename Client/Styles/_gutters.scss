@@ -1,5 +1,5 @@
 $base-padding: 8;
 
-@function pad($multiply: 1) {
+@function gutter($multiply: 1) {
   @return $base-padding * $multiply + px;
 }
