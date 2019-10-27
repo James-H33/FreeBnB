@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Server.Data.Interfaces;
 using Server.Models;
 using Server.Services.Interfaces;
-using Shared;
+using FreeBnB.Shared;
 
 namespace Server.Services
 {
@@ -44,7 +44,7 @@ namespace Server.Services
 
       if (userExists)
       {
-        return false;
+        throw new Exception("User with this email already exists.");
       }
 
       var user = _mapper.Map<User>(userForRegister);

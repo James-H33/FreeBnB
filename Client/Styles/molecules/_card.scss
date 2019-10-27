@@ -10,12 +10,12 @@
 }
 
 .card__content {
-  padding: pad(2);
+  padding: gutter(2);
 }
 
 .card__content-title {
   color: $generalTextColor;
-  padding: pad(1) 0;
+  padding: gutter(1) 0;
   font-size: 18px;
   font-weight: 800;
 }

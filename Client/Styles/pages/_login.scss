@@ -1,0 +1,41 @@
+.login-page {
+  padding-top: gutter(9);
+}
+
+.login-page__content {
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 gutter(2);
+
+  h3 {
+    padding: gutter(3) 0;
+    display: none;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+}
+
+.login-page__form {
+  display: grid;
+
+  label {
+    display: grid;
+    margin-bottom: gutter(2);
+    line-height: 30px;
+    font-weight: 700;
+  }
+
+  input {
+    padding: 12px;
+    font-size: 16px;
+    color: #484848;
+    outline: none;
+  }
+}
+
+.login-page__error-message {
+  font-size: 14px;
+  color: #e65a5a;
+  padding: gutter(1) 0;
+}

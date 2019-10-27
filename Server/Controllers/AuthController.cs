@@ -2,9 +2,9 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Server.Services.Interfaces;
-using Shared;
+using FreeBnB.Shared;
 
-namespace Server.Controllers
+namespace FreeBnB.Server.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
@@ -38,19 +38,25 @@ namespace Server.Controllers
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserForRegister user)
     {
-      if (user != null)
-      {
-        BadRequest("No content recieved.");
+      try {
+        if (user != null)
+        {
+          BadRequest("No content recieved.");
+        }
+
+        var userCreated =  await _authService.Register(user);
+
+        if (!userCreated)
+        {
+          return BadRequest("Could not create user.");
+        }
+
+        return StatusCode(201, "User Created.");
       }
-
-      var userCreated =  await _authService.Register(user);
-
-      if (!userCreated)
+      catch (Exception ex)
       {
-        return BadRequest("Could not create user.");
+        return StatusCode(500, ex.Message);
       }
-
-      return StatusCode(201, "User Created.");
     }
   }
 }

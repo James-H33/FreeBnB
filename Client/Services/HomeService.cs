@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Services.Interfaces;
 using FreeBnB.Shared;
 using Newtonsoft.Json;
-using Services.Interfaces;
 
 namespace Services
 {

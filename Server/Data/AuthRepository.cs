@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Server.Data.Interfaces;
 using Server.Models;
-using Shared;
+using FreeBnB.Shared;
 
 namespace Server.Data
 {

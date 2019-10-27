@@ -1,3 +1,12 @@
+.fb-button {
+  padding: 16px 24px;
+  font-size: 18px;
+  color: white;
+  outline: none;
+  border-radius: 4px;
+  background: #355C7D;
+  letter-spacing: 1px; }
+
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -46,7 +55,7 @@
 
 .nav__link {
   color: #484848;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 300;
   margin-left: 50px;
   text-decoration: none; }
@@ -69,7 +78,7 @@
   grid-area: Title;
   margin: 0;
   color: #355C7D;
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 800; }
 
 .header__nav {
@@ -95,6 +104,7 @@
 .home-page__info {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
   grid-template-areas: 'Title Contact' 'Description Contact'; }
 
 .home-page__title {
@@ -112,6 +122,38 @@
   color: #484848;
   grid-area: Contact; }
 
+.login-page {
+  padding-top: 72px; }
+
+.login-page__content {
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 0 16px; }
+  .login-page__content h3 {
+    padding: 24px 0;
+    display: none;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 1px; }
+
+.login-page__form {
+  display: grid; }
+  .login-page__form label {
+    display: grid;
+    margin-bottom: 16px;
+    line-height: 30px;
+    font-weight: 700; }
+  .login-page__form input {
+    padding: 12px;
+    font-size: 16px;
+    color: #484848;
+    outline: none; }
+
+.login-page__error-message {
+  font-size: 14px;
+  color: #e65a5a;
+  padding: 8px 0; }
+
 .index_page {
   padding: 30px 0; }
   .index_page h2 {
@@ -124,6 +166,7 @@
   padding: 0; }
 
 html, body {
+  color: #484848;
   font-family: 'Open Sans', sans-serif; }
 
 body {

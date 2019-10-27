@@ -1,7 +1,7 @@
-using Services;
-using Services.Interfaces;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Services;
+using Services.Interfaces;
 
 namespace FreeBnB.Client
 {
@@ -10,6 +10,7 @@ namespace FreeBnB.Client
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddSingleton<IHomeService, HomeService>();
+      services.AddSingleton<ILoginService, LoginService>();
     }
 
     public void Configure(IComponentsApplicationBuilder app)

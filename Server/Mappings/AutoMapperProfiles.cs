@@ -1,5 +1,5 @@
 using Server.Models;
-using Shared;
+using FreeBnB.Shared;
 using AutoMapper;
 
 namespace Server.Mappings

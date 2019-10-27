@@ -1,0 +1,48 @@
+@page "/login"
+@using Services.Interfaces
+@using FreeBnB.Shared
+@inject ILoginService LoginService
+
+<div class="login-page">
+  <div class="login-page__content">
+    <h3>Freebnb</h3>
+    <div class="login-page__form">
+      <label for="username">
+        Username
+        <input id="username" type="text" @bind-value="@user.Username" />
+      </label>
+
+      <label for="password">
+        Password
+        <input id="password" type="password" @bind-value="@user.Password" />
+      </label>
+
+      @if (hasError)
+      {
+        <div class="login-page__error-message">Username or Password is incorrect.</div>
+      }
+
+      <Button OnButtonClick="Login" Label="Login" />
+    </div>
+  </div>
+</div>
+
+@code {
+  public UserLoginDto user { get; set; } = new UserLoginDto();
+  public bool hasError = false;
+
+  public async void Login()
+  {
+    hasError = false;
+
+    StateHasChanged();
+
+    var isSuccess = await LoginService.Login(user);
+
+    if (isSuccess == false)
+    {
+      hasError = true;
+      StateHasChanged();
+    }
+  }
+}

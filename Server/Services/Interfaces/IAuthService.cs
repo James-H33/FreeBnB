@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Server.Models;
-using Shared;
+using FreeBnB.Shared;
 
 namespace Server.Services.Interfaces
 {
